@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tickets</title>
+  <link rel="stylesheet" href="/public/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Ticketsystem</h1>
+
+    <div class="actions">
+      <a class="button" href="/tickets/new">Neues Ticket</a>
+      <form method="get" action="/tickets" class="inline-form">
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+          <option value="">Alle</option>
+          <% statuses.forEach((status) => { %>
+            <option value="<%= status %>" <%= selectedStatus === status ? 'selected' : '' %>><%= status %></option>
+          <% }) %>
+        </select>
+        <button type="submit">Filtern</button>
+      </form>
+    </div>
+
+    <% if (tickets.length === 0) { %>
+      <p>Keine Tickets vorhanden.</p>
+    <% } else { %>
+      <ul class="ticket-list">
+        <% tickets.forEach((ticket) => { %>
+          <li>
+            <a href="/tickets/<%= ticket.id %>"><strong><%= ticket.title %></strong></a>
+            <span class="badge status"><%= ticket.status %></span>
+            <span class="badge priority"><%= ticket.priority %></span>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </main>
+</body>
+</html>

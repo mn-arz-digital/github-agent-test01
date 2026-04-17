@@ -1,0 +1,27 @@
+{
+  "name": "github-agent-test01",
+  "version": "1.0.0",
+  "description": "Kleines MVP Ticketsystem mit Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mn-arz-digital/github-agent-test01.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mn-arz-digital/github-agent-test01/issues"
+  },
+  "homepage": "https://github.com/mn-arz-digital/github-agent-test01#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  }
+}
