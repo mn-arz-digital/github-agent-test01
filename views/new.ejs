@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neues Ticket</title>
+  <link rel="stylesheet" href="/public/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Neues Ticket</h1>
+    <a href="/tickets">← Zurück zur Liste</a>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <form method="post" action="/tickets" class="form">
+      <label for="title">Titel</label>
+      <input id="title" name="title" value="<%= formValues.title %>" required />
+
+      <label for="description">Beschreibung</label>
+      <textarea id="description" name="description" rows="6"><%= formValues.description %></textarea>
+
+      <label for="priority">Priorität</label>
+      <select id="priority" name="priority">
+        <% priorities.forEach((priority) => { %>
+          <option value="<%= priority %>" <%= formValues.priority === priority ? 'selected' : '' %>><%= priority %></option>
+        <% }) %>
+      </select>
+
+      <button type="submit">Ticket erstellen</button>
+    </form>
+  </main>
+</body>
+</html>

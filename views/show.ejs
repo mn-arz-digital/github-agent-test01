@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= ticket.title %></title>
+  <link rel="stylesheet" href="/public/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1><%= ticket.title %></h1>
+    <p><a href="/tickets">← Zurück zur Liste</a></p>
+
+    <p><strong>Status:</strong> <span class="badge status"><%= ticket.status %></span></p>
+    <p><strong>Priorität:</strong> <span class="badge priority"><%= ticket.priority %></span></p>
+    <p><strong>Erstellt:</strong> <%= new Date(ticket.createdAt).toLocaleString('de-DE') %></p>
+
+    <% if (ticket.description) { %>
+      <h2>Beschreibung</h2>
+      <p><%= ticket.description %></p>
+    <% } %>
+
+    <h2>Status ändern</h2>
+    <form method="post" action="/tickets/<%= ticket.id %>/status" class="inline-form">
+      <select name="status">
+        <% statuses.forEach((status) => { %>
+          <option value="<%= status %>" <%= ticket.status === status ? 'selected' : '' %>><%= status %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Speichern</button>
+    </form>
+  </main>
+</body>
+</html>
